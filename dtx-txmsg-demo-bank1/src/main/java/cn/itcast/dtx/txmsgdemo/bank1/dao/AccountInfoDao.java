@@ -17,10 +17,10 @@ public interface AccountInfoDao {
 
 
     @Select("select count(1) from de_duplication where tx_no = #{txNo}")
-    int isExistTx(String txNo);
+    int isExistTx(@Param("txNo") String txNo);
 
 
     @Insert("insert into de_duplication values(#{txNo},now());")
-    int addTx(String txNo);
+    int addTx(@Param("txNo") String txNo);
 
 }

@@ -25,7 +25,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
     public void addAccountInfoBalance(AccountChangeEvent accountChangeEvent) {
         log.info("bank2更新本地账号，账号：{},金额：{}",accountChangeEvent.getAccountNo(),accountChangeEvent.getAmount());
         if(accountInfoDao.isExistTx(accountChangeEvent.getTxNo())>0){
-
+            log.info("bank2 已经消息过了，不用重复消费，账号：{} , 金额：{} , TxNo：{}",accountChangeEvent.getAccountNo(),accountChangeEvent.getAmount(),accountChangeEvent.getTxNo());
             return ;
         }
         //增加金额
